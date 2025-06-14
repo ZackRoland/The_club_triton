@@ -10,13 +10,16 @@ html {
 }
 /*Color directory */
 :root {
-  --primary-color: #1a6bb0;
-  --secondary-color: #2b2118;
-  --accent-color: #ff9933;
-  --text-color: #333;
-  --play-table-color-1: #f4d1ae;
-  --play-table-color-2: #604d53;
-  --play-table-color-3: #c29979;
+  --body-color: #1a6bb0;
+  --border-color: #2b2118;
+  --restart-btn-color: #ffe375;
+  --structure-card-color: #b1bac6;
+  --dining-card-color: #71edd2;
+  --living-card-color: #72e083;
+  --projector-screen-color: #f1bb87;
+  --play-table-color: #c29979;
+  --pop-up-btn-color: var(--border-color);
+  --pop-up-btn-hover-color: #3a2a20;
 }
 /* Custom fonts section */
 @font-face {
@@ -40,7 +43,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #1a6bb0;
+  background: var(--body-color);
   padding: 20px 0; /* Top/bottom padding only */
 }
 /* Defines the game region */
@@ -49,7 +52,7 @@ body {
   /* width: 95%; */
   height: auto;
   aspect-ratio: 16/10;
-  border: 1.25vw solid #2b2118;
+  border: 1.25vw solid var(--border-color);
   border-radius: 12px;
   margin: 20px auto; /* Fixed side margins by default */
   position: relative; /* For absolute-positioned children */
@@ -87,7 +90,7 @@ body {
   position: absolute;
   align-self: center;
   background-color: green;
-  border: 1.25vw solid #2b2118;
+  border: 1.25vw solid var(--border-color);
   border-radius: 50%;
   font-size: 1.5em;
   display: flex;
@@ -145,7 +148,7 @@ body {
   right: 0.5em;
   width: 1em;
   height: 1em;
-  background: #ffe375;
+  background: var(--restart-btn-color);
   border: none;
   border-radius: 50%;
 }
@@ -165,7 +168,7 @@ body {
   width: 3vw;
   height: 4vw;
   background: white;
-  border: 0.25vw solid #333;
+  border: 0.25vw solid black;
   border-radius: 0.5vw;
   margin-top: 30%;
   align-content: center;
@@ -179,15 +182,15 @@ body {
 }
 #prof-structure-card,
 #student-structure-card {
-  background: #b1bac6;
+  background: var(--structure-card-color);
 }
 #prof-dining-hall-card,
 #student-dining-hall-card {
-  background: #71edd2;
+  background: var(--dining-card-color);
 }
 #prof-living-card,
 #student-living-card {
-  background: #72e083;
+  background: var(--living-card-color);
 }
 /* Character Design Section */
 .game-characters {
@@ -242,7 +245,7 @@ body {
   left: 10%;
   width: 80%;
   height: 150%;
-  background-color: #f1bb87;
+  background-color: var(--projector-screen-color);
   border: 1.25vw solid black;
   z-index: 9;
   transition: top 0.7s ease-in-out;
@@ -327,7 +330,7 @@ body {
 .slide-counter {
   font-weight: bold;
   font-size: 1.2em;
-  color: #333;
+  color: black;
   min-width: 40px;
   text-align: center;
 }
@@ -406,7 +409,7 @@ body {
   bottom: 0;
   width: 100%;
   height: 30%; /* Relative to container */
-  background-color: var(--play-table-color-3);
+  background-color: var(--play-table-color);
   border-top: 1.25vw solid #2b2118;
   border-bottom: none;
   box-sizing: border-box;
@@ -438,11 +441,6 @@ body {
   flex: 1;
 }
 
-.card:hover {
-  border-color: #ffe100;
-  border-width: 0.5vw;
-  transform: translateY(-4vh);
-}
 #student-name {
   text-align: right;
 }
@@ -462,41 +460,12 @@ body {
 #student-name {
   font-family: table, sans-serif;
   font-size: 100%;
-  color: var(--text-color);
-  font-weight: bold;
 }
 
 /* Card design and formatting */
-td {
-  width: 20%;
-  aspect-ratio: 3/4;
-  border: 2px solid #333;
-  text-align: center;
-  background-color: transparent;
-  position: relative;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
 .prof-cards,
 .student-cards {
   margin-top: 1%;
-}
-/* Card Animations Section*/
-.card {
-  transition: all 0.5s ease;
-  cursor: pointer;
-  position: relative;
-  transform-style: preserve-3d;
-}
-
-.card.flipped {
-  transform: rotateY(180deg);
-}
-
-.card-front {
-  background: white;
 }
 
 /* triton-card specific styles for game */
@@ -510,19 +479,6 @@ triton-card {
 triton-card[style*="visibility: hidden"] {
   opacity: 0 !important;
   pointer-events: none;
-}
-
-/* Ensure card slots maintain their shape when empty */
-td:empty {
-  border: 2px dashed rgba(51, 51, 51, 0.3);
-  background-color: rgba(255, 255, 255, 0.1);
-  min-height: 60px;
-}
-
-/* Fix for card animation states - add a specific class for empty states */
-td.card-moving {
-  border: 2px dashed rgba(51, 51, 51, 0.3);
-  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Copyright Section */
@@ -584,7 +540,7 @@ triton-card:hover {
   margin: 10px;
   font-size: 100%;
   text-align: center;
-  background-color: #2b2118;
+  background-color: var(--pop-up-btn-color);
   color: white;
   border: none;
   border-radius: 12px;
@@ -599,7 +555,7 @@ triton-card:hover {
 }
 #play:hover,
 #home:hover {
-  background-color: #3a2a20;
+  background-color: var(--pop-up-btn-hover-color);
 }
 #play {
   margin-bottom: 5%;
