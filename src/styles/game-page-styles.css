@@ -20,6 +20,8 @@ html {
   --play-table-color: #c29979;
   --pop-up-btn-color: var(--border-color);
   --pop-up-btn-hover-color: #3a2a20;
+  --timer-text-color: white;
+  --timer-full-color: green;
 }
 /* Custom fonts section */
 @font-face {
@@ -39,27 +41,21 @@ html {
 }
 /* Basic body design */
 body {
-  min-height: 100vh;
+  height:100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background: var(--body-color);
-  padding: 20px 0; /* Top/bottom padding only */
 }
 /* Defines the game region */
 .game-container {
-  width: 95vw;
-  /* width: 95%; */
+  width: 95%;
   height: auto;
   aspect-ratio: 16/10;
-  border: 1.25vw solid var(--border-color);
-  border-radius: 12px;
-  margin: 20px auto; /* Fixed side margins by default */
-  position: relative; /* For absolute-positioned children */
-  display: grid;
-  top: 12vh; /* Increased from 8vh to 12vh to account for 10vh navbar + spacing */
-  gap: 1em; /* Consistent spacing */
-
+  border: 0.75em solid var(--border-color);
+  border-radius: 1em;
+  position: relative; 
+  top: 12vh;
   font-size: 1.5vw;
   /* font-size: clamp(12px, 1.5vw, 16px); Responsive base font size */
   box-shadow:
@@ -79,29 +75,27 @@ body {
 .won-cards,
 #rules-dropdown {
   width: 100%;
-  font-size: 1em; /* Inherits from .game-container */
 }
 /* Timer design and formatting */
 .timer {
   width: 8vw;
   height: 8vw;
-  margin-left: 42vw;
-  margin-top: 22.5%;
+  left: 42vw;
+  bottom: 22.5%;
   position: absolute;
   align-self: center;
-  background-color: green;
+  background-color: var(--timer-full-color);
   border: 1.25vw solid var(--border-color);
   border-radius: 50%;
-  font-size: 1.5em;
+  font-size: 2em;
   display: flex;
   justify-content: center;
-  text-align: center;
   align-items: center;
   z-index: 1;
   box-shadow:
     0 0 15px rgba(0, 0, 0, 0.5),
     inset 0 0 15px rgba(0, 0, 0, 0.5);
-  color: white;
+  color: var(--timer-text-color);
   font-weight: bold;
 }
 /* Timer animation styling*/
@@ -123,29 +117,28 @@ body {
 .game-board {
   background-image: url("../assets/imgs/backgrounds/lecture-hall-1.png");
   background-size: 100% 80%;
-  /* background-size: cover; */
   background-repeat: no-repeat; /* Prevents tiling */
 }
 /* Basic play-table formatting */
 .play-table {
-  display: flex; /* new */
-  justify-content: space-between; /* push decks to sides */
-  align-items: center; /* vertically center them */
-  padding: 0 1%; /* a little side-padding */
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 0 1%; 
   box-sizing: border-box;
 }
 /* restart button formatting*/
 #restart-btn {
-  z-index: 1001; /* ensures restart button is on top and not covered */
-  display: flex; /* allows centering of restart symbol */
+  z-index: 1; 
+  display: flex; 
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
   font-size: 2em;
   float: right;
   position: absolute;
-  top: 0.5em;
-  right: 0.5em;
+  top: 0.25em;
+  right: 0.25em;
   width: 1em;
   height: 1em;
   background: var(--restart-btn-color);
@@ -159,26 +152,25 @@ body {
   display: flex;
   justify-content: space-around;
   position: absolute;
-  gap: 10%;
-  /* gap: 10px; */
+  gap: 5%;
 }
 
 .prof-won-cards > div,
 .student-won-cards > div {
-  width: 3vw;
-  height: 4vw;
+  width: 2em;
+  height: 3em;
   background: white;
-  border: 0.25vw solid black;
-  border-radius: 0.5vw;
-  margin-top: 30%;
+  border: 0.2em solid black;
+  border-radius: 0.4em;
+  margin-top: 35%;
   align-content: center;
   text-align: center;
 }
 .prof-won-cards {
-  margin-left: 5%;
+  left: 5%;
 }
 .student-won-cards {
-  margin-left: 85%;
+  right: 5%;
 }
 #prof-structure-card,
 #student-structure-card {
@@ -246,7 +238,7 @@ body {
   width: 80%;
   height: 150%;
   background-color: var(--projector-screen-color);
-  border: 1.25vw solid black;
+  border: 1.25em solid black;
   z-index: 9;
   transition: top 0.7s ease-in-out;
   border-radius: 0.5em;
