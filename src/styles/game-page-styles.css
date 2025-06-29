@@ -193,13 +193,16 @@ body {
 .professor-character img,
 .student-character img {
   width: 20vw;
-  margin-top: 92%;
+  height: auto;
+  
 }
 .professor-character img {
   margin-left: 40%;
+  margin-top: 85%;
 }
 .student-character img {
-  margin-left: 220%;
+  margin-left: 192.5%;
+  margin-top: 92%;
 }
 .card-comparison {
   position: absolute;
